@@ -1,0 +1,249 @@
+
+
+#democard {
+  float: right;
+  border: solid black 1px;
+  padding: 20px;
+  margin-right: 50px;
+  margin-top: 0px;
+  list-style-type: none;
+}
+
+.dropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px 
+}
+
+.NacoLogic {
+  display: none;
+  position: relative;
+  min-width: 160px 
+}
+
+.firstorderdropdown {
+  margin-left: 20px;
+}
+
+.secondorderdropdown {
+  margin-left: 40px;
+}
+
+#surghauterisquedropdown {
+  display: none;
+  position: relative;
+  min-width: 160px;  
+}
+
+#TEVDropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px;  
+}
+
+#sgltdropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px; 
+}
+
+#dbdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px;   
+  }
+
+#Stentdropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px; 
+}
+
+#PACdropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px;
+}
+
+#ICdropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px;
+}
+
+#valvulodropdowncontent {
+  display: none;
+  position: relative;
+  min-width: 160px;
+}
+
+#arrythmiecontentdiv {
+    display: none;
+    position: relative;
+    min-width: 160px   
+  }
+  
+#MCASdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px   
+}
+
+#aplaqdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px   
+  }
+
+  #anticoagdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px   
+  }
+
+
+  #aceidropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px   
+  }
+
+#IRCdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px  
+}
+
+  #arbdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px   
+  }
+
+  #arozullahdiv {
+    display: none;
+    position: relative;
+    min-width: 160px 
+  }
+
+/* Global CSS */
+  .hidden {
+    display: block !important;
+  }
+
+  .emphasize {
+    color: black !important;
+    text-decoration-line: none !important;
+    border: solid black 1px !important;
+    padding: 1px;
+    margin: 1px;
+    cursor: pointer;
+  }
+
+  .unselectedoption {
+    color:darkgrey;
+    text-decoration: line-through;
+    border: dotted darkgrey 1px;
+    border-radius: 2px;
+    padding: 1px;
+    margin: 1px;
+    cursor: pointer;
+  }
+
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+ }
+
+ .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: black;
+  border: solid 1px black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+/* End of Global CSS */
+
+#SAHSdropdowncontent {
+    display: none;
+    position: relative;
+    min-width: 160px 
+}
+
+#calculatorblock {
+    border: solid black 1px;
+    min-height: 100px;
+    min-width: 25%;
+    position: sticky;
+    bottom: 0px;
+    top: 0px;
+    float: right;
+    z-index:1;
+    margin-right: 50px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.removeli {
+  color: black;
+  font-weight: bold;
+  margin: 10px;
+  padding: 1px;
+  cursor: pointer;
+  border: solid black 1px;
+  border-radius: 2px;
+}
+
+.removeli:hover {
+  color:red; 
+}
+
+
+h1, h2, h3 {
+  color: blue;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+table, th, td {
+  border: 1px solid;
+}
+
+table {
+  position: sticky;
+  float: right;
+  bottom: 0px;
+}
+
+
+.thead {
+  background-color: cadetblue;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.tfoot {
+  font-weight: bold;
+}
+
+
+

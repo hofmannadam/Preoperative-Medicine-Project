@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./resources/css/index.css" type="text/css" rel="stylesheet">
+        <link href="./resources/css/index.css" type="text/css" rel="stylesheet" media="print">
+        <title>Consultation Préop</title>
+    </head>
+    <body>
+        <header>
+            <h1 id="titleline">Consultation Préoperatoire</h1>
+            <h2>Chirurgie Non-Cardiaque</h2>
+            <ul id="democard"> <h2 id="idpt">Identification</h2> </ul>
+        </header>
+        <main>
+            <section id='patientidentification'>
+                <form id="patientid">
+                    <label for = 'patientlastname'>Nom:</label>
+                    <input type="text" name="patientlastname" id="patientlastname" /> <br>
+                    <label for = 'patientfirstname'>Prénom:</label>
+                    <input type="text" name="patientfirstname" id="patientfirstname" /> <br>
+                    <label for = 'DOB'>DDN:   </label> 
+                    <input type="date" name="DOB" id="DOB" /> <br> 
+                    <label for = 'Age'>Age:   </label> 
+                    <input type="number" min="18" max="120" name="Age" id="patientage" /> <br> 
+                    <label for = 'RAMQ'>No. RAMQ: </label>
+                    <input type="text" name="RAMQ" id="RAMQ" /> <br>
+                    <label for="sexmMF">Sexe:</label> <input type="radio" name="sexMF" id="sexmale" checked />M <input type="radio" name="sexMF" id="sexfemale" />F <br>
+                    <label for = 'LocalID'>No. Dossier:</label>
+                    <input type="text" name="LocalID" id="LocalID" /> <br>
+                    <button type="submit" id="democardformsubmit">Soumettre</button>
+                </form>
+            </section>
+        </section>
+        <section id="surgerytype">
+            <h2>Type de chirurgie prévu</h2>
+                <label for="surgtype">Type:</label>
+                <input type="textbox" id="surgtype" name="surgtype" /><br>
+                <input type="radio" id="surgUrgent" name="surgurgent" />
+                <label for="Urgent">Urgent</label> 
+                <input type="radio" id="surgSemi-Urgent" name="surgurgent" />
+                <label for="Semi-Urgent">Semi-Urgent</label> 
+                <input type="radio" id="surgÉlectif" name="surgurgent" checked/>
+                <label for="Électif">Électif</label><br>
+                <label for="surgrisk">Niveau de risque?</label>
+                    <input type="radio" name="surgrisk" id="surgfaiblerisque"></input><div class="tooltip">Faible<span class="tooltiptext">Ex: cataractes, biopsie cutanée, chirurgie minimalement invasif</span></div> 
+                    <input type="radio" name="surgrisk" id="surgintermrisque"></input><div class="tooltip">Intermédiaire<span class="tooltiptext">Ex: ORL, PTG ou ortho périphérique, gynéco intrapelvienne</span></div>
+                    <input type="radio" name="surgrisk" id="hauterisque" class="RCRIcheck"><div class="tooltip">Haute<span class="tooltiptext">Ex: chirurgie intrathoracique, intrapéritoneale et vasculaire, voir: Schwarze et al. JAMA 2015</span></div><br>
+                        <div id="surghauterisquedropdown" class="firstorderdropdown"> Sous-type particulier?
+                            <select id="highrisksubtype"> Type de chirurgie à haute risque:
+                                <option selected>Aucune</option>
+                                <option id="RAAA">AAA ouverte</option>
+                                <option id="periphvasc">Vasculaire périphérique</option>
+                                <option id="thoracic">Intra-thoracique</option>
+                                <option id="intraperitoneal">Intra-péritoneale</option>
+                            </select>
+                    </div>
+                
+             
+            <h2>Type d'anaésthésie</h2>
+                <input type="checkbox" name="Générale" />
+                <label for="Générale">Générale</label> 
+                <input type="checkbox" name="Axiale" />
+                <label for="Axiale">Axiale</label> 
+                <input type="checkbox" name="Régionale" />
+                <label for="Régionale">Régionale</label> 
+                <input type="checkbox" name="Locale" />
+                <label for="Locale">Locale</label>
+            <h2>Type de séjour à l'hôpital</h2>
+                <input type="radio" name="surgtype" id="CDJ" value="CDJ" />
+                <label for="CDJ">CDJ</label> 
+                <input type="radio" name="surgtype" id="Admission" value="Admission" />
+                <label for="Admission">Admission</label> 
+        </section>
+            <section id="pasthistory">
+                <div id="calculatorblock">
+                    <p id="RCRI">RCRI Score =<span id="RCRIspan" class="RCRIspan"> 0</span></p>
+                </div>
+                <h2>Antécédents Médicaux et Chirurgicaux Pertinents</h2>
+                <h3>ATCD Médicaux:</h3>
+                    <div id="ap">
+                        <!-- Checkbox Section -->
+                        <!-- Neuro Section -->
+                        <input type="checkbox" name="Épilepsie" id="Épilepsie" />
+                        <label for="Épilepsie">Épilepsie</label> <br>
+                        <input type="checkbox" name="AVC" id="AVCcheckbox" class="RCRIcheck" />
+                        <label for="AVC">AVC</label>  <br>
+                        <input type="checkbox" name="MCAS" id="MCAScheckbox" />
+                        <!-- Cardio Section -->
+                        <label for="MCAS">MCAS</label> <br>
+                            <div id="MCASdropdowncontent" class="firstorderdropdown">
+                                <input type="checkbox" id="Stent" > Stent <br>
+                                    <div id="Stentdropdowncontent" class="secondorderdropdown">
+                                        <input type="checkbox" id="moinsque3mois"> < 3 mois
+                                        <input type="checkbox" id="moinsque12mois"> 3-12 mois
+                                        <input type="checkbox" id="plusque12mois"> > 12 mois
+                                        <input type="checkbox" id="plusque5ans" class="RCRIcheck"> Plus que 5 ans
+                                    </div> 
+                                <input type="checkbox" id="PAC"> PAC <br>
+                                <div id="PACdropdowncontent" class="secondorderdropdown" >
+                                    <input type="checkbox" id="moinsque10ans"> Moins que 10 ans 
+                                    <input type="checkbox" id="plusque10ans" class="RCRIcheck"> Plus que 10 ans
+                                </div> 
+                            </div>
+
+                        <input type="checkbox" name="Insuffisance Cardiaque" class="RCRIcheck" id="insuffisancecardiaque"/>
+                        <label for="Insuffisance Cardiaque">Insuffisance Cardiaque</label> <br>
+                            <div id="ICdropdowncontent" class ="firstorderdropdown">
+                                <label for="VG">FEVG%: </label>
+                                <input name="VG" type="text" />
+                            </div>
+                        <input type="checkbox" name="Valvulopathie Cardiaque" id="valvulocardiaque"/>
+                        <label for="Valvulopathie Cardiaque">Valvulopathie Cardiaque</label> <br>
+                            <div id="valvulodropdowncontent" class ="firstorderdropdown">
+                                <label for="Valvulo">Valvulopathie: </label>
+                                <input name="Valvulo" type="text" id="valvulotext" /><input type="submit" id="valvulosubmit" value= "Ajouter" /> <br>
+                                <ul id="valvuloul"></ul>
+                                <label for="stenoseaortique">Stenose Aortique Sévère?</label>
+                                <input type="checkbox" id="SAsevere" />
+                            </div>
+
+                        <input type="checkbox" name="Arrythmie Cardiaque" id="arrythmiecheckbox" />
+                        <label for="Arrythmie Cardiaque">Arrythmie Cardiaque</label> <br>
+                            <div id="arrythmiecontentdiv" class="firstorderdropdown"> 
+                                <input type="checkbox" id="FA"> FA/Flutter
+                                <input type="checkbox" id="pacemaker"> Pacemaker
+                                <input type="checkbox" id="defib"> Defibrillateur
+                                <label for="otherarrythmia">Autre:</label><input type="text" name="otherarrythmia" id="otherarrythmia" />
+                            </div>
+                           
+                        
+                        <!-- Pulmonary Section -->
+                        <input type="checkbox" name="MPOC ou Asthme" id="MPOCcheckbox" />
+                        <label for="MPOC ou Asthme">MPOC ou Asthme</label> <br>
+                        <input type="checkbox" name="TEV" id="TEV" />
+                        <label for="TEV">TEV</label><br>
+                            <div id="TEVDropdowncontent" class="firstorderdropdown">
+                                <input type="radio" id="TEVthreemonths" name="TEVcheckbox" class="TEVcheckbox" /> < 3 mois
+                                <input type="radio" id="TEVoneyear" name="TEVcheckbox" class="TEVcheckbox" /> 3-12 mois
+                                <input type="radio" id="TEVmorethan" name="TEVcheckbox" class="TEVcheckbox" /> > 12 mois
+                            </div>
+                       
+                        <!-- Metabolic Section -->
+                        <input type="checkbox" id="IRC">
+                        <label for="IRC">IRC</label>
+                        <br>
+                            <div id="IRCdropdowncontent" class="firstorderdropdown">
+                                <label for="baselineGFR">DFG de base:</label>
+                                <input type="number" id="baselineGFR" min="1" max="120"> <label for="baselinecreatinine">Creatinine de base (umol/L)</label> <input type ="number" min="0" max="2000" id="baselinecreatinine" name="baselinecreatinine" />
+                                <label for="creatRCRI">Creatinine plus que 177umol/L</label><input type="checkbox" name="creatRCRI" id="creatRCRI" class="RCRIcheck" placeholder="Entrez chiffre et taper Enter"/>
+                            </div> 
+                        <input type="checkbox" name="Cirrhose" />
+                        <label for="Cirrhose">Cirrhose</label>     <br>
+                      
+                        <input type="checkbox" name="Diabète" id="DBcheckbox" />
+                        <label for="Diabète">Diabète</label> <br>
+                            <div id="dbdropdowncontent" class="firstorderdropdown">
+                                <input type="checkbox" name="dbtreat" id="dbit" class="RCRIcheck"/>Insuline <input type="checkbox" name="dbtreat" id="hgo"/> HGO <input type="checkbox" name="dbtreat" id="diete" /> Diète
+                            </div> 
+                        <input type="checkbox" name="Coagulopathie" />
+                        <!-- Misc Section -->
+                        <label for="Coagulopathie">Coagulopathie</label> <br>
+                        <input type="checkbox" name="SAHS" id="SAHScheckbox" />
+                        <label for="SAHS">SAHS</label> <br>
+                            <div id="SAHSdropdowncontent" class="firstorderdropdown">
+                                <input type="checkbox" id="Apparéillé" /> CPAP ou BIPAP personelle  <br>
+                            </div> 
+                        <input type="checkbox" name="reactionadverseanaesthesie" />
+                        <label for="reactionadverseanaesthesie">Reaction Adverse à l'Anaésthésie</label> <br>
+                        <input type="checkbox" name="Abus ROH ou Drogues" />
+                        <label for="Abus ROH ou Drogues">Abus ROH ou Drogues</label> <br>
+                        <br>
+                        <h3>Chirurgies Antérieures:</h3>
+                            <div class="firstorderdropdown">
+                                <input type="checkbox" /> CCK 
+                                <input type="checkbox" /> HATSOB
+                                <input type="checkbox" /> PTG
+                                <input type="checkbox" /> PTH
+                                <input type="checkbox" /> Appendicectomie
+                                <input type="checkbox" /> Hernie
+                                <input type="checkbox" /> Amygdalectomie
+                                <input type="checkbox" /> ORL
+                                <input type="checkbox" /> Onco: sein 
+                                <input type="checkbox" /> Onco: rein 
+                                <input type="checkbox" /> Onco: cutanée 
+                                <input type="checkbox" /> Onco:  GI
+                            </div> <br>
+                        <!-- Free Text Input Section -->
+                        <div id="autresnotes">
+                            <label for="atcdmed">Autres Antécédents et Notes:</label>
+                            <input type="text" name="atcdmed" id="atcdmed" />
+                            <button id="submitatcdmed" >Ajouter</button>
+                        </div>
+                        <ul id="pmhul" class="noteul">
+                        </ul>
+                        
+                    </div>
+                <h3>Allergies et Intolérances</h3>
+                <div id="allergiesetintolerances">
+                    <input type="radio" name="allergies" id="noallergies" checked />
+                    <label for="noallergies">Aucune allergie ou intolérance</label> 
+                    <br>
+
+                    <input type="radio" name="allergies" id="allergiespertinentes" />
+                    <label for="allergiespertinentes">Allergies et intolérances:</label> 
+                    <input type="text" id="allergiesetintolerancespertinentes" /> <button type="submit" id="allergiespertinentessubmit">Ajouter</button> <br>
+                    <ul id="allul"></ul>
+                </div>
+            </section>
+            <section id="meds">
+                <h2>Médicaments Actives</h2>
+    
+                    <p>Anticoagulants et Antiplaquettaires</p>
+
+                    <input type="checkbox" name="antiplaq" id="antiplaq" />
+                    <label for="antiplaq">Antiplaquettaires:</label>
+                        <div id="aplaqdropdowncontent" class="firstorderdropdown">
+                            <input type="checkbox" id="aas" />AAS 
+                            <input type="checkbox" id="Clopidogrel" />Clopidogrel 
+                            <input type="checkbox" id="Ticagrelor" />Ticagrelor 
+                            <input type="checkbox" id="Prasugrel" />Prasugrel 
+                            <input type="checkbox" id="Dipyridamole" />Dipyridamole ou Aggrenox 
+                        </div>
+                    <br>
+
+                    <input type="checkbox" name="anticoag" id="anticoag" />
+                    <label for="anticoag">Anticoagulants:</label>
+                        <div id="anticoagdropdowncontent" class="firstorderdropdown">
+                            <input type="checkbox" id="Coumadin" class="TEVcheckbox" />Coumadin 
+                            <input type="checkbox" id="Rivaroxaban" class="TEVcheckbox" />Rivaroxaban 
+                            <input type="checkbox" id="Apixaban" class="TEVcheckbox" />Apixaban 
+                            <input type="checkbox" id="Edoxaban" class="TEVcheckbox" />Edoxaban 
+                            <input type="checkbox" id="Dabigatran" class="TEVcheckbox" />Dabigatran 
+                        </div>
+                    <br>
+
+                    <p>Diabète</p>
+                    <input type="checkbox" name="SGLT2" id="SGLT2" />
+                    <label for="SGLT2">SGLT2</label> <br>
+                        <div id="sgltdropdowncontent" class="firstorderdropdown">
+                            <input type="checkbox" id="Dapagliflozin" />Dapagliflozin (Forxiga)
+                            <input type="checkbox" id="Canagliflozin" />Canagliflozin (Invokana)
+                            <input type="checkbox" id="Empagliflozin" />Empagliflozin (Jardiance)
+                        </div>
+
+                    <input type="checkbox" name="Metformine" id="Metformine" />
+                    <label for="Metformine">Metformine</label>  <br>
+
+                    <input type="checkbox" name="Sulfonyluree" id="Sulfonyluree" />
+                    <label for="Sulfonyluree">Sulfonylurée</label> 
+                    <input type="text" id="Sulfonylureetype" /> <br>
+
+                    <input type="checkbox" name="Insuline" id="Insuline" />
+                    <label for="Insuline">Insuline</label> 
+                    <input type="text" id="Insulinetype" /> <br>
+
+                    <p>Antihypertensives</p>
+
+                    <input type="checkbox" name="acei" id="acei" />
+                    <label for="acei">IECA:</label>
+                        <div id="aceidropdowncontent">
+                            <input type="checkbox" id="Ramipril" />Ramipril 
+                            <input type="checkbox" id="Perindopril" />Perindopril 
+                            <input type="checkbox" id="Trandalopril" />Trandalopril 
+                            <input type="checkbox" id="Enalapril" />Enalapril 
+                        </div>
+                    <br>
+
+                    <input type="checkbox" name="arb" id="arb" />
+                    <label for="arb">ARA:</label>
+                        <div id="arbdropdowncontent">
+                            <input type="checkbox" id="Losartan" />Losartan 
+                            <input type="checkbox" id="Telmisartan" />Telmisartan 
+                            <input type="checkbox" id="Candesartan" />Candesartan 
+                        </div>
+                    <br>
+
+
+                    <p>Autres Médicaments Pertinents</p>
+                    <input type="checkbox" name="antiepileptic" id="antiepileptic" />
+                    <label for="antiepileptic">Antiépileptiques:</label> 
+                    <input type="text" id="antiepileptictype" /> <br>
+
+                    <input type="checkbox" name="immunomodulator" id="immunomodulator" />
+                    <label for="immunomodulator">Prednisone et autres immunomodulateurs:</label> 
+                    <input type="text" id="immunomodulatortype" /> <br>
+                    <input type="checkbox" id="corticorx" class="firstorderdropdown" /> Plus que 3 semaines de corticotherapie supraphysiologique / 12 mois 
+
+
+                    <input type="checkbox" name="bronchodil" id="bronchodil" />
+                    <label for="bronchodil">Pompes/ Bronchodilatateurs:</label> 
+                    <input type="text" id="bronchodiltype" /> <br>
+                
+                    <input type="checkbox" name="AINS" id="AINS" />
+                    <label for="AINS">AINS:</label> 
+                    <input type="text" id="AINStype" /> <br>
+                    
+           
+            <section id="hpi">
+                <h2>Capacité fonctionelle</h2>
+                    <input type="radio" name="capfonc" id="plus4mets" value="plus4mets" />
+                    <label for="plus4mets">Plus que 4 METS</label> 
+                    <input type="radio" name="capfonc" id="moins4mets" value="moins4mets" />
+                    <label for="moins4mets">Moins que 4 METS</label> 
+                    <label for="raison4mets">Notes:</label>
+                    <input type="text" name="raison4mets" />
+                <h2>État générale</h2>
+                <div id="etatgenerale">
+                    <input type="radio" name="symptomes" id="nosymptoms" checked />
+                    <label for="symptomes">Aucune symptome aigue ou pertinente</label> 
+                    <br>
+
+                    <input type="radio" name="symptomes" id="symptomespertinentes" />
+                    <label for="symptomes">Autres symptomes pertinentes:</label> 
+                    <input type="text" id="symptomespertinentesinput" /> <button type="submit" id="symptomespertinentessubmit">Add Note</button> <br>
+                </div>
+
+            </section>
+            <section id="pe">
+                <h2>Examen physique</h2>
+                <label for="signesvitaux">Signes Vitaux:</label><input type="text" id="signesvitaux" name="signesvitaux" /> <br>
+                <label for="NeuroN">Neuro:</label><input type="radio" name="PENeuro" id="NeuroN" checked />Normale <input type="radio" id="NeuroAN" name="PENeuro" />Anormale <input type="text" class="PEnotes" /> <br>
+                <label for="ORLN">ORL:</label><input type="radio" id="ORLN" name="PEORL" checked />Normale <input type="radio" id="ORLAN" name="PEORL" />Anormale <input type="text" class="PEnotes" /> <br>
+                <label for="CardioN">Cardio:</label><input type="radio" id="CardioN" name="PEcardio" checked />Normale <input type="radio" id="CardioAN" name="PECardio" />Anormale <input type="text" class="PEnotes" /> <br>
+                <label for="PulmN">Pulmonaire:</label><input type="radio" id="PulmN" name="PEPulm" checked />Normale <input type="radio" id="PulmAN" name="PEPulm" />Anormale <input type="text" class="PEnotes" /> <br>
+                <label for="AbdoN">Abdominale:</label><input type="radio" id="AbdoN" name="PEAbdo" checked />Normale <input type="radio" id="AbdoAN" name="PEAbdo" />Anormale <input type="text" class="PEnotes" /> <br>
+                <label for="ExtN">Extremités:</label><input type="radio" id="ExtN" name="PEExt" checked />Normale <input type="radio" id="ExtAN" name="PEExt" />Anormale <input type="text" class="PEnotes" /> <br>
+            </section>
+            <section id="paraclinical">
+                <h2>Laboratoires</h2>
+                    <label for="fsc">FSC:</label><input type="text" id="fsc" name="fsc"><input type="checkbox" />N <br>
+                    <label for="DFG">DFG:</label><input type="text" id="DFG" name="DFG"><input type="checkbox" />N <br>
+                    <label for="Electro">Electrolytes:</label><input type="text" id="Electro" name="Electro"><input type="checkbox" />N <br>
+                    <label for="Coagulo">Coagulogramme:</label><input type="text" id="Coagulo" name="Coagulo"><input type="checkbox" />N <br>
+                    <label for="Autreslabos">Autres:</label><input type="text" id="Electro" name="Electro"><br>
+                <h2>ECG</h2>
+                    <label for="ECG">ECG:</label><input type="text" id="ECG" name="ECG"><input type="checkbox" />Aucune anomalie significatif<br>
+                <h2>Imagerie Pertinente</h2>
+                    <label for="Imageriepertinente">Imagerie:</label><input type="text" id="Imageriepertinente" name="Imageriepertinente"><input type="checkbox" />Aucune anomalie significatif   <input type="checkbox" />Aucune imagerie pertienete<br>
+            </section>
+            <section id="analysis">
+                <h2>Analyse Par Système</h2>
+                <h3>Cardio</h3>
+                    <p id="RCRITwo">RCRI Score =<span id="RCRIspanTwo"> 0</span></p> <p id="RCRIInterpretation">Risque éstimé de mortalité ou infarctus cardiaque dans les 30 jours après chirurgie = 3.9%</p>
+                <h3>Pulmonaire</h3>
+                    <input type="radio" name="arozullah" checked id="arozullahtwo"/> Risque pulmonaire faible <input type = "radio" name="arozullah" id="arozullah" /> Activer calculatrice Arozullah
+                        <div id="arozullahdiv">
+                            <table>
+                                <thead>
+                                    <td class="thead">Facteur de risque</td><td class="thead">Catégorie</td><td class="thead">Valeur</td>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Age</td><td>
+                                            <select name="arozullahage" id="arozullahage">
+                                                <option id="arozullahage59" selected class="Arozullahageoption" >< 60</option>
+                                                <option id="arozullahage69" class="Arozullahageoption">60-69</option>
+                                                <option id="arozullahage70" class="Arozullahageoption">> 70</option>
+                                            </select>
+                                             <td id="arozullaagepts">0</td> 
+                                    </tr>
+                                    <tr>
+                                        <td>ATCD MPOC</td><td><input type="checkbox" id="arozullahmpoc" class="arozullahbutton"/> Connu MPOC</td><td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dépendent(e) pour AVQ/D</td><td><input type="checkbox" id="arozullahavq" class="arozullahbutton"/> Partiel ou complètement</td><td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Urée</td><td><input type="checkbox" id="arozullahbun" class="arozullahbutton"/> > 30 mg/dL</td><td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Albumine</td><td><input type="checkbox" id="arozullahalb" class="arozullahbutton"/> < 30 g/L </td><td>8</td>
+                                    </tr>
+                                  
+                                    <tr>
+                                        <td>Type de chirurgie</td><td>
+                                            <select id="arozullahsurg" name="arozullahsurg">
+                                                <option value="autre" id="arozullahautre" class="arozullahoption" selected>Autre</option>
+                                                <option value="ORL" id="arozullahORL" class="arozullahoption" >ORL</option>
+                                                <option value="Gynéco, abdo supérieure, vasculaire périph" id="arozullahNeuro" class="arozullahoption" >Neuro, abdo supérieure, vasculaire périph</option>
+                                                <option value="Thoracique" id="arozullahThor" class="arozullahoption" >Thoracique</option>
+                                                <option value="RAAA" id="arozullahRAAA" class="arozullahoption">AAA ouverte</option>
+                                          </select> 
+                                        </td><td id="arozullahsurgvalue">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Urgent?</td><td><input type="checkbox" id="arozullahurg" class="arozullahbutton"/> Oui </td><td>11</td>
+                                    </tr>
+                                </tbody> 
+                                <tfoot>
+                                    <td class="tfoot">Totale des points: <span id="Arozullahpttot">0</span></td>
+                                    <td class="tfoot">Classe Arozullah: <span id="Arozullahclass">1</span></td>
+                                    <td class="tfoot">Risque de défaillance respiratoire: <span id="Arozullahrespperc">0.5%</span></td>
+                                </tfoot>
+                            </table>
+                        </div>
+                <h3>Rénale</h3>
+                <h3>Endocrino</h3>
+                <h3>Neuro</h3>
+                <h3>Rhumato/Immuno</h3>
+            </section>
+            <div>
+                <section name="plan" id="printorder">
+                    <h2>Plan et Ordonnances</h2>
+                    <h3>Contraindications ou délai</h3>
+                        <input type ="radio" name="delai" id="OKSOP" />Ok pour SOP<input type="radio" name="delai" id="delaiSOP" />Delai: <input type="text" />
+                    <h3>Revoir le patient</h3>
+                        <label for="pasrevoir">Non</label>
+                        <input type="checkbox" name="pasrevoir" id="pasrevoir" checked/><br>
+                        <label for="revoirpreop">Avant SOP:</label>
+                        <input type="checkbox" name="revoirpreop" id="revoirpreop" /><input type="text" /><br>
+                        <label for="revoirostop">Durant Hospitalisation:</label>
+                        <input type="checkbox" name="revoirpostop" id="revoirpostop" /><input type="text" /><br>
+                        <label for="revoirposthosp">Après Hospitalisation:</label>
+                        <input type="checkbox" name="revoirposthosp" id="revoirposthosp" /><input type="text" /><br>
+                    <h3> Modifications Thérapeutiques</h3>
+                        <ul id="modtherap">
+                            <!-- Neuro Section -->
+                            <li id="epilepsieorder" style="display:none"><strong>Épilepsie: </strong>Patient devrait prendre ses médicaments anti-épileptiques le matin du chirurgie, sans faute.</li>
+                            <!-- Cardio Section -->
+                            <li id="pmporder" style="display:none"><strong>Patient avec pacemaker:</strong> si pace-dépéndent et chirurgie utilisant éléctrocauterisation, aimant a placer préop selon discretion de l'anaéthésie.</li>
+                            <li id="defiborder" style="display:none"><strong>Patient avec defibrillateur: </strong>faire voir par la clinique pacemaker en préoperatoire.</li>
+                            <li id="FAorder" style="display:none"><strong>FA ou Flutter:</strong> FC a surveiller en postopératoire - ECG J#1 postop et si FC > 120 bpm PRN. Aviser si FC > 120 bpm ou TAS < 90mmHg.</li>
+                            <!-- Pulmonary Section -->
+                            <li id="MPOCorder" style="display:none"><strong>MPOC:</strong> Patient devrait prendre ses pompes usuelles le matin du chirurgie. Ventolin 200iu inh à l'appel au SOP.</li>
+                            <li id="SAHSorder" style="display:none"><strong>SAHS:</strong> Patient devrait amener et utiliser son appareil CPAP/BiPAP si hospitalisé.</li>
+                            <!-- TEV Section -->
+                            <li id="TEV3monthorder" style="display:none"><strong>TEV < 3 mois:</strong><br>
+                                <span class="unselectedoption">Si chirurgie non-urgent delai jusqu'à 3 mois post-TEV</span><br>
+                                <span class="unselectedoption">Si chirurgie urgent bridging </span>
+                                <span class="unselectedoption"> et/ou insertion FVCI</span>
+                            <li id="TEV3to12MonthOrder" style="display:none"><strong>TEV 3-12 mois:</strong></li><br>
+                                <span class="unselectedoption" id="TEVcoumadin" style="display:none">Bridging: Suspendre Coumadin 5 jours avant SOP. Débuter Fragmin 200u/kg sc die jour 4, 3, et 2 avant SOP. Fragmin 5000u SC J#1 avant SOP. Reprendre Coumadin postop #1 dose usuelle, et administrer Fragmin 200u/kg sc die jusqu'à RIN thérapeutique > 24h. Premiere RIN J#3 postop.</span><br>
+                                <span class="unselectedoption" id="TEVcoumadinAlt" style="display:none">Bridging pas indiqué: Suspendre Coumadin 5 jours avant SOP et reprendre postop j#1 ou selon chirurgien(ne). Controle RIN J#3 postop ou selon calendrier usuel.</span>
+                                <span class="unselectedoption" id="TEVNaco" style="display:none">Suspendre<span id="TEVRivaroxaban" class="NacoLogic"> Rivaroxaban</span><span id="TEVApixaban" class="NacoLogic"> Apixaban</span> <span id="TEVDabigatran" class="NacoLogic"> Dabigatran</span> <span id="TEVEdoxaban" class="NacoLogic"> Edoxaban</span> 72h avant SOP, et reprendre postop J#1 ou selon chirurgien(ne)</span>
+                            </li>
+                            <!-- Medication Modification Section -->
+                            <!-- Antiplatelets and Anticoagulants -->
+                            <li id="AntiplateletRx" style="display:none"><strong>Antiplaquéttaires:</strong><br>
+                                <span class="unselectedoption" id="DAPT3Months" style="display:none">Patient ayant eu stent cardiaque dans les dernières 3 mois - delai chirurgie éléctif à prevoir jusqu'à > 3 mois post stent  </span><br>
+                                <span class="unselectedoption" id="AAS1" style="display:none">Suspendre AAS jusqu'à 7 jours avant SOP, reprendre en post-op J#1 ou selon chirurgien(ne)   </span><span class="unselectedoption" id="AAS2" style="display:none">Chirurige mineure et/ou vasculaire et/ou stent (3-12 mois) - continuer AAS dans la période périopératoire</span><br>
+                                <span class="unselectedoption" id="Plavix1" style="display:none">Suspendre Clopidogrel jusqu'à 5 jours avant SOP, reprendre en post-op J#1 ou selon chirurgien(ne)   </span><span class="unselectedoption" id="Plavix2" style="display:none">Chirurige vasculaire - continuer Clopidorgrel dans la période périopératoire</span><br>
+                                <span class="unselectedoption" id="Prasugrel1" style="display:none">Suspendre Prasugrel jusqu'à 7 jours avant SOP, reprendre en post-op J#1 ou selon chirurgien(ne)   </span><span class="unselectedoption" id="Plavix2" style="display:none">Chirurige vasculaire - continuer Prasugrel dans la période périopératoire</span><br>
+                                <span class="unselectedoption" id="Ticagrelor1" style="display:none">Suspendre Ticagrelor jusqu'à 5 jours avant SOP, reprendre en post-op J#1 ou selon chirurgien(ne)   </span><span class="unselectedoption" id="Ticagrelor2" style="display:none">Chirurige vasculaire - continuer Ticagrelor dans la période périopératoire</span><br>
+                                <span class="unselectedoption" id="Dipyridamole1" style="display:none">Suspendre Dipyridamole jusqu'à 10 jours avant SOP, reprendre en post-op J#1 ou selon chirurgien(ne)   </span><span class="unselectedoption" id="Dipyridamole2" style="display:none">Chirurige vasculaire - continuer Dipyridamole dans la période périopératoire</span><br>
+                            </li>
+                        </ul>
+                </section>
+                <section id="signaturedate">     
+                    <div>Signature:</div>
+                    <div id="currentdate"></div>
+                    <p>Version 1.0 (c)Adam Hofmann 2024</p> 
+                </section>
+        </div>   
+        </main>
+        <Footer>
+            <button onclick="window.print()">Print Note</button> 
+            <button id="printorderbutton">Print Order</button>
+            <script type="text/javascript" src="Resources/JS/index.js"></script>
+      
+        </Footer>
+    </body>
+</html>
